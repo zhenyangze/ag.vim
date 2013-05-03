@@ -80,3 +80,5 @@ v                   open in vertical split.
 gv                  open in vertical split silently.
 
 q                   close the quickfix window.
+
+  vim:tw=78:fo=tcq2:ft=help:norl:
