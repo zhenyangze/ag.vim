@@ -77,7 +77,7 @@ function! ag#Ag(cmd, args)
 
   if l:match_count
     if l:apply_mappings
-      nnoremap <silent> <buffer> go <CR><C-w><C-w>
+      nnoremap <silent> <buffer> go <CR>:copen<C-w>
       nnoremap <silent> <buffer> h  <C-W><CR><C-w>K
       nnoremap <silent> <buffer> H  <C-W><CR><C-w>K<C-w>b
       nnoremap <silent> <buffer> o  <CR>
