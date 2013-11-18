@@ -64,6 +64,7 @@ function! ag#Ag(cmd, args)
   redraw!
 
   if l:apply_mappings
+    exec "nnoremap <silent> <buffer> e <CR><C-W><C-W>:ccl<CR>"
     exec "nnoremap <silent> <buffer> q :ccl<CR>"
     exec "nnoremap <silent> <buffer> t <C-W><CR><C-W>T"
     exec "nnoremap <silent> <buffer> T <C-W><CR><C-W>TgT<C-W><C-W>"
