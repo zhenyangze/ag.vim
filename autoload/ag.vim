@@ -85,7 +85,7 @@ function! ag#Ag(cmd, args)
 
     " TODO: j  Now you probably want to do something on the next line
 
-    echom "ag.vim keys: q=quit <cr>/t/h/v=enter/tab/split/vsplit go/T/H/gv=preview versions of same"
+    echom "ag.vim keys: q=quit <cr>/e/t/h/v=enter/edit/tab/split/vsplit go/T/H/gv=preview versions of same"
   endif
 endfunction
 
