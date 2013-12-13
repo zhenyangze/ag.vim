@@ -50,9 +50,11 @@ function! ag#Ag(cmd, args)
   if a:cmd =~# '^l'
     exe g:ag_lhandler
     let l:apply_mappings = g:ag_apply_lmappings
+    let l:matches_window_prefix = 'l' " we're using the location list
   else
     exe g:ag_qhandler
     let l:apply_mappings = g:ag_apply_qmappings
+    let l:matches_window_prefix = 'c' " we're using the quickfix window
   endif
 
   " If highlighting is on, highlight the search keyword.
@@ -64,26 +66,24 @@ function! ag#Ag(cmd, args)
   redraw!
 
   if l:apply_mappings
-    nnoremap <silent> <buffer> e  <CR><C-w><C-w>:cclose<CR>
     nnoremap <silent> <buffer> go <CR><C-w><C-w>
     nnoremap <silent> <buffer> h  <C-W><CR><C-w>K
     nnoremap <silent> <buffer> H  <C-W><CR><C-w>K<C-w>b
     nnoremap <silent> <buffer> o  <CR>
-    nnoremap <silent> <buffer> q  :cclose<CR>
     nnoremap <silent> <buffer> t  <C-w><CR><C-w>T
     nnoremap <silent> <buffer> T  <C-w><CR><C-w>TgT<C-W><C-W>
     nnoremap <silent> <buffer> v  <C-w><CR><C-w>H<C-W>b<C-W>J<C-W>t
 
-    nnoremap <silent> <buffer> gv <C-w><CR><C-w>H<C-w>b<C-w>J80<C-w>-5<C-w>+
+    exe 'nnoremap <silent> <buffer> e <CR><C-w><C-w>:' . l:matches_window_prefix .'close<CR>'
+    exe 'nnoremap <silent> <buffer> q  :' . l:matches_window_prefix . 'close<CR>'
+    exe 'nnoremap <silent> <buffer> gv :let b:height=winheight(0)<CR><C-w><CR><C-w>H:' . l:matches_window_prefix . 'open<CR><C-w>J:exe printf(":normal %d\<lt>c-w>_", b:height)<CR>'
     " Interpretation:
-    " ^W<cr> Jump to quickfix under cursor (this is a default quickfix window binding)
-    " ^WH    Slam the new window to the left wall
-    " ^Wb    Go to the bottom-right window, which is the quickfix window
-    " ^WJ    Slam it to the floor
-    " 80^W-  Decrease this window by (at most) 80 lines.
-    " 5^W+   Increase the quickfix window by 5 lines, so you can see what you're doing
-
-    " TODO: j  Now you probably want to do something on the next line
+    " :let b:height=winheight(0)<CR>                      Get the height of the quickfix/location list window
+    " <CR><C-w>                                           Open the current item in a new split
+    " <C-w>H                                              Slam the newly opened window against the left edge
+    " :copen<CR> -or- :lopen<CR>                          Open either the quickfix window or the location list (whichever we were using)
+    " <C-w>J                                              Slam the quickfix/location list window against the bottom edge
+    " :exe printf(":normal %d\<lt>c-w>_", b:height)<CR>   Restore the quickfix/location list window's height from before we opened the match
 
     echom "ag.vim keys: q=quit <cr>/e/t/h/v=enter/edit/tab/split/vsplit go/T/H/gv=preview versions of same"
   endif
