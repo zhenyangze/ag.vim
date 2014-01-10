@@ -82,14 +82,14 @@ line): >
 
                                                        *g:ag_apply_lmappings*
 Whether or not to add custom mappings to location list windows opened by this
-plugin.  Only applies if you're using the location list.  Default 0.  Example: >
-  let g:ag_apply_lmappings=1
+plugin.  Only applies if you're using the location list.  Default 1.  Example: >
+  let g:ag_apply_lmappings=0
 <
 
                                                        *g:ag_apply_qmappings*
 Whether or not to add custom mappings to quickfix windows opened by this
-plugin.  Only applies if you're using the error list.  Default 0.  Example: >
-  let g:ag_apply_qmappings=1
+plugin.  Only applies if you're using the error list.  Default 1.  Example: >
+  let g:ag_apply_qmappings=0
 <
 
                                                               *g:ag_lhandler*
