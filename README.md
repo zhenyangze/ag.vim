@@ -18,7 +18,7 @@ git clone https://github.com/ggreer/the_silver_searcher ag && cd ag && ./build.s
 * Then, if you're using [pathogen](https://github.com/tpope/vim-pathogen):
 
 ```sh
-cd ~/.vim/bundle && git clone https://github.com/rking/ag.vim ag && vim +HelpTags
+cd ~/.vim/bundle && git clone https://github.com/rking/ag.vim ag && vim +Helptags
 ```
 
 * Or, if you're using [Vundle](https://github.com/gmarik/vundle):
