@@ -6,11 +6,11 @@ if !exists("g:agprg")
 endif
 
 if !exists("g:ag_apply_qmappings")
-  let g:ag_apply_qmappings = 1
+  let g:ag_apply_qmappings=1
 endif
 
 if !exists("g:ag_apply_lmappings")
-  let g:ag_apply_lmappings = 1
+  let g:ag_apply_lmappings=1
 endif
 
 if !exists("g:ag_qhandler")
