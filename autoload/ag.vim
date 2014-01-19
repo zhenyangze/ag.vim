@@ -21,6 +21,10 @@ if !exists("g:ag_lhandler")
   let g:ag_lhandler="botright lopen"
 endif
 
+if !exists("g:ag_mapping_message")
+  let g:ag_mapping_message=1
+endif
+
 function! ag#Ag(cmd, args)
   " If no pattern is provided, search for the word under the cursor
   if empty(a:args)
@@ -92,7 +96,9 @@ function! ag#Ag(cmd, args)
       " <C-w>J                                              Slam the quickfix/location list window against the bottom edge
       " :exe printf(":normal %d\<lt>c-w>_", b:height)<CR>   Restore the quickfix/location list window's height from before we opened the match
 
-      echom "ag.vim keys: q=quit <cr>/e/t/h/v=enter/edit/tab/split/vsplit go/T/H/gv=preview versions of same"
+      if g:ag_mapping_message && l:apply_mappings
+        echom "ag.vim keys: q=quit <cr>/e/t/h/v=enter/edit/tab/split/vsplit go/T/H/gv=preview versions of same"
+      endif
     endif
   else
     echom 'No matches for "'.a:args.'"'
