@@ -52,7 +52,7 @@ function! ag#Ag(cmd, args)
   endtry
 
   if a:cmd =~# '^l'
-    let l:match_count = len(getloclist())
+    let l:match_count = len(getloclist(winnr()))
   else
     let l:match_count = len(getqflist())
   endif
