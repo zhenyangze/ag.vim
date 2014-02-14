@@ -77,7 +77,6 @@ function! ag#Ag(cmd, args)
 
   if l:match_count
     if l:apply_mappings
-      nnoremap <silent> <buffer> go <CR>:copen<C-w>
       nnoremap <silent> <buffer> h  <C-W><CR><C-w>K
       nnoremap <silent> <buffer> H  <C-W><CR><C-w>K<C-w>b
       nnoremap <silent> <buffer> o  <CR>
@@ -86,7 +85,9 @@ function! ag#Ag(cmd, args)
       nnoremap <silent> <buffer> v  <C-w><CR><C-w>H<C-W>b<C-W>J<C-W>t
 
       exe 'nnoremap <silent> <buffer> e <CR><C-w><C-w>:' . l:matches_window_prefix .'close<CR>'
+      exe 'nnoremap <silent> <buffer> go <CR>:' . l:matches_window_prefix . 'open<C-w>'
       exe 'nnoremap <silent> <buffer> q  :' . l:matches_window_prefix . 'close<CR>'
+
       exe 'nnoremap <silent> <buffer> gv :let b:height=winheight(0)<CR><C-w><CR><C-w>H:' . l:matches_window_prefix . 'open<CR><C-w>J:exe printf(":normal %d\<lt>c-w>_", b:height)<CR>'
       " Interpretation:
       " :let b:height=winheight(0)<CR>                      Get the height of the quickfix/location list window
