@@ -26,9 +26,11 @@ if !exists("g:ag_mapping_message")
 endif
 
 function! ag#Ag(cmd, args)
-  " Check that `ag` is installed and on the $PATH
-  if !executable('ag')
-    echoe "'ag' command not found. Is the silver searcher installed and on your $PATH?"
+  let l:ag_executable = get(split(g:agprg, " "), 0)
+
+  " Ensure that `ag` is installed
+  if !executable(l:ag_executable)
+    echoe "Ag command '" . l:ag_executable . "' was not found. Is the silver searcher installed and on your $PATH?"
     return
   endif
 
