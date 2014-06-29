@@ -48,10 +48,10 @@ function! ag#Ag(cmd, args)
     let g:agformat="%f:%l:%c:%m"
   endif
 
-  let grepprg_bak=&grepprg
-  let grepformat_bak=&grepformat
-  let t_ti_bak=&t_ti
-  let t_te_bak=&t_te
+  let l:grepprg_bak=&grepprg
+  let l:grepformat_bak=&grepformat
+  let l:t_ti_bak=&t_ti
+  let l:t_te_bak=&t_te
   try
     let &grepprg=g:agprg
     let &grepformat=g:agformat
@@ -59,10 +59,10 @@ function! ag#Ag(cmd, args)
     set t_te=
     silent execute a:cmd . " " . escape(l:grepargs, '|')
   finally
-    let &grepprg=grepprg_bak
-    let &grepformat=grepformat_bak
-    let &t_ti=t_ti_bak
-    let &t_te=t_te_bak
+    let &grepprg=l:grepprg_bak
+    let &grepformat=l:grepformat_bak
+    let &t_ti=l:t_ti_bak
+    let &t_te=l:t_te_bak
   endtry
 
   if a:cmd =~# '^l'
