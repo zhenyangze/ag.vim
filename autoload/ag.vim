@@ -88,6 +88,11 @@ function! ag#Ag(cmd, args)
     let l:grepargs = a:args . join(a:000, ' ')
   end
 
+  if empty(l:grepargs)
+    echo "Usage: ':Ag {pattern}' (or just :Ag to search for the word under the cursor). See ':help :Ag' for more information."
+    return
+  endif
+
   " Format, used to manage column jump
   if a:cmd =~# '-g$'
     let s:ag_format_backup=g:ag_format
