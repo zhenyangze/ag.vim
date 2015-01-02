@@ -14,6 +14,16 @@ shows the results in a split window.
     will open the |Quickfix| window for you. If [!] is not given the first
     error is jumped to.
 
+:AgBuffer[!] [options] {pattern}                                 *:AgBuffer*
+
+    Search for {pattern} in all open buffers.  Behaves just like the |:grep|
+    command, but will open the |Quickfix| window for you. If [!] is not given
+    the first error is jumped to.
+    Note: this will not find your changes in modified buffers (it really
+    only searches the files that match your open buffers). You can save
+    buffers automatically when searching with the 'autowrite' option. The
+    buffer will be ignored if it is an directory.
+
 :AgAdd [options] {pattern} [{directory}]                            *:AgAdd*
 
     Just like |:Ag|, but instead of making a new list, the matches are
@@ -26,6 +36,11 @@ shows the results in a split window.
 :LAg [options] {pattern} [{directory}]                                *:LAg*
 
     Just like |:Ag| but instead of the |quickfix| list, matches are placed in
+    the current |location-list|.
+
+:LAgBuffer [options] {pattern}                                  *:LAgBuffer*
+
+    Just like |:AgBuffer| but instead of the |quickfix| list, matches are placed in
     the current |location-list|.
 
 :LAgAdd [options] {pattern} [{directory}]                          *:LAgAdd*
