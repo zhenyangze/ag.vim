@@ -75,24 +75,24 @@ more information.
 ==============================================================================
 OPTIONS                                                          *ag-options*
 
-                                                                    *g:agprg*
+                                                                    *g:ag_prg*
 The location of the Ag program, and any options you want passed to it before
 searching.  Default: "ag --vimgrep" (for parsable output).  Example: >
-  let g:agprg="ag --vimgrep --smart-case"
+  let g:ag_prg="ag --vimgrep --smart-case"
 <
 
-                                                              *g:aghighlight*
+                                                              *g:ag_highlight*
 If 1, highlight the search terms after searching.  Default: 0.  Example: >
-  let g:aghighlight=1
+  let g:ag_highlight=1
 <
 
-                                                                 *g:agformat*
+                                                                 *g:ag_format*
 Format to recognize the matches.  See 'errorformat' for more info.  Default:
 "%f" when searching for files, "%f:%l:%c:%m" if not otherwise set.  For
-example, if your `g:agprg` is set to just "ag" (no column numbers in the
+example, if your `g:ag_prg` is set to just "ag" (no column numbers in the
 output, so when you jump to a match your cursor will be on the start of the
 line): >
-  let g:agformat="%f:%l:%m"
+  let g:ag_format="%f:%l:%m"
 <
 
                                                        *g:ag_apply_lmappings*
