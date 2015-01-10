@@ -25,6 +25,18 @@ if !exists("g:ag_mapping_message")
   let g:ag_mapping_message=1
 endif
 
+function! ag#AgBuffer(cmd, args)
+  let l:bufs = filter(range(1, bufnr('$')), 'buflisted(v:val)')
+  let l:files = []
+  for buf in l:bufs
+    let l:file = fnamemodify(bufname(buf), ':p')
+    if !isdirectory(l:file)
+      call add(l:files, l:file)
+    endif
+  endfor
+  call ag#Ag(a:cmd, a:args . ' ' . join(l:files, ' '))
+endfunction
+
 function! ag#Ag(cmd, args)
   let l:ag_executable = get(split(g:agprg, " "), 0)
 
