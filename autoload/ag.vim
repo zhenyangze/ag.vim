@@ -2,7 +2,7 @@
 
 " Location of the ag utility
 if !exists("g:agprg")
-  let g:agprg="ag --column"
+  let g:agprg="ag --vimgrep"
 endif
 
 if !exists("g:ag_apply_qmappings")

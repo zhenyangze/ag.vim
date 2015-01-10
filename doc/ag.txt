@@ -77,8 +77,8 @@ OPTIONS                                                          *ag-options*
 
                                                                     *g:agprg*
 The location of the Ag program, and any options you want passed to it before
-searching.  Default: "ag --column".  Example: >
-  let g:agprg="ag --column --smart-case"
+searching.  Default: "ag --vimgrep" (for parsable output).  Example: >
+  let g:agprg="ag --vimgrep --smart-case"
 <
 
                                                               *g:aghighlight*
