@@ -23,7 +23,7 @@ Vim has various ways of installing plugins, the standard way is in [the document
 
   Then open vim and rum `:helptags ~/.vim/bundle/ag/doc`.
 
-### Configuration
+### Configuration ###
 
 You can specify a custom ag name and path in your .vimrc like so:
 
@@ -62,7 +62,7 @@ In the quickfix window, you can use:
     gv   to open in vertical split silently
     q    to close the quickfix window
 
-### Acknowledgements
+### Acknowledgements ###
 
 This Vim plugin is derived (and by derived, I mean copied, almost entirely)
 from [milesz's ack.vim](https://github.com/mileszs/ack.vim), which I also
