@@ -198,24 +198,20 @@ function! ag#AgHelp(cmd,args)
 endfunction
 
 function! ag#guessProjectRoot()
-  let projroot = ''
-  for marker in ['.git', '.hg', '.svn', 'bzr', '_darcs', 'build.xml']
-    let searchdir = getcwd()
-    while 1
-      if filereadable('/'.searchdir.'/'.marker) || isdirectory('/'.searchdir.'/'.marker)
-        let projroot = searchdir
-        break
+  let searchdir = '' 
+  let splitsearchdir = split(getcwd(), "/")
+
+  while len(splitsearchdir) > 2
+    let searchdir = '/'.join(splitsearchdir, '/').'/'
+    for marker in ['.rootdir', '.git', '.hg', '.svn', 'bzr', '_darcs', 'build.xml']
+      " found it! Return the dir
+      if filereadable(searchdir.marker) || isdirectory(searchdir.marker)
+        return searchdir
       endif
-      let temp = split(searchdir, "/")
-      if len(temp) < 3  " If size is that small we assume we won't find it anymore
-        break
-      endif
-      let searchdir = join(temp[0:-2], "/") " Splice the list to get rid of tail directory
-    endwhile
-  endfor
-  if len(projroot) " Any result means good to go
-    return "/".projroot
-  endif
-  " Not found, returning parent directory of current file / file itself.
+    endfor
+    let splitsearchdir = splitsearchdir[0:-2] " Splice the list to get rid of the tail directory
+  endwhile
+
+  " Nothing found, fallback to current working dir
   return getcwd()
 endfunction
