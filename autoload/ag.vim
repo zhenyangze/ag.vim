@@ -184,7 +184,7 @@ endfunction
 function! ag#GetDocLocations()
   let dp = ''
   for p in split(&runtimepath,',')
-    let p = p.'/doc/'
+    let p = p.'doc/'
     if isdirectory(p)
       let dp = p.'*.txt '.dp
     endif
