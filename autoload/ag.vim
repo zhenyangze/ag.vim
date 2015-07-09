@@ -119,9 +119,9 @@ function! ag#Ag(cmd, args)
   endif
 
   " If highlighting is on, highlight the search keyword.
-  if exists("g:ag_highlight")
-    let @/=a:args
-    set hlsearch
+  if exists('g:ag_highlight')
+    let @/ = matchstr(a:args, "\\v(-)\@<!(\<)\@<=\\w+|['\"]\\zs.{-}\\ze['\"]")
+    call feedkeys(":let &hlsearch=1 \| echo \<CR>", 'n')
   end
 
   redraw!
