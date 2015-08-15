@@ -171,6 +171,9 @@ function! ag#Ag(cmd, args)
     endif
   else
     echom 'No matches for "'.a:args.'"'
+    " Close the split window automatically:
+    cclose
+    lclose
   endif
 endfunction
 
