@@ -169,8 +169,12 @@ function! ag#Ag(cmd, args)
         echom "ag.vim keys: q=quit <cr>/e/t/h/v=enter/edit/tab/split/vsplit go/T/H/gv=preview versions of same"
       endif
     endif
-  else
+  else " Close the split window automatically:
+    cclose
+    lclose
+    echohl WarningMsg
     echom 'No matches for "'.a:args.'"'
+    echohl None
   endif
 endfunction
 
