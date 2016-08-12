@@ -72,6 +72,11 @@ function! ag#AgBuffer(cmd, args)
   call ag#Ag(a:cmd, a:args . ' ' . join(l:files, ' '))
 endfunction
 
+function! ag#AgFile(cmd, args)
+  let l:file = bufname("%")
+  call ag#Ag(a:cmd, a:args . ' ' . l:file)
+endfunction
+
 function! ag#Ag(cmd, args)
   let l:ag_executable = get(split(g:ag_prg, " "), 0)
 
